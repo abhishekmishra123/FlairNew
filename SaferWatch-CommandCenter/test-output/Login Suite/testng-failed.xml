@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Login Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Login Tests(failed)">
+    <classes>
+      <class name="TestCases.LoginTest">
+        <methods>
+          <include name="Verify_validation_message_with_valid_password_and_empty_EmailAddress_field"/>
+          <include name="beforeSuite"/>
+          <include name="Verify_login_page_url"/>
+          <include name="afterSuite"/>
+          <include name="Verify_login_page_title"/>
+          <include name="afterMethod"/>
+          <include name="Verify_validation_message_with_invalid_email_address_and_invalid_Password_field"/>
+          <include name="Verify_login_functionality_with_valid_credentials_of_administrator"/>
+          <include name="Verify_CSS_value_of_login_page_fields"/>
+          <include name="Verify_validation_message_with_valid_EmailAddress_and_empty_Password_field"/>
+          <include name="Verify_validation_message_with_empty_email_address_and_empty_password_field"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- TestCases.LoginTest -->
+    </classes>
+  </test> <!-- Login Tests(failed) -->
+</suite> <!-- Failed suite [Login Suite] -->

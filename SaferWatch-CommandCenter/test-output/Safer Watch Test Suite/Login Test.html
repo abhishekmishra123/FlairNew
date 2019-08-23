@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>TestNG:  Login Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Login Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>13/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu May 23 14:00:29 PDT 2019</td>
+</tr>
+<tr><td>Total time:</td><td>177 seconds (177291 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_css_value_of_login_page_fields()'><b>Verify_css_value_of_login_page_fields</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_08 To verify css value of login page fields</td>
+<td></td>
+<td>10</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_forgot_password_link()'><b>Verify_forgot_password_link</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_09 To verify forgot password link </td>
+<td></td>
+<td>18</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_login_functionality_with_public_user()'><b>Verify_login_functionality_with_public_user</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_12 To verify public user login functionality with sign up via app</td>
+<td></td>
+<td>13</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_login_functionality_with_valid_credentials_of_superAdmin()'><b>Verify_login_functionality_with_valid_credentials_of_superAdmin</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_11 To verify login functionality with valid credentials of super admin </td>
+<td></td>
+<td>31</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_login_page_title()'><b>Verify_login_page_title</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_001 To verify login page title</td>
+<td></td>
+<td>0</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_login_page_ui_fields()'><b>Verify_login_page_ui_fields</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_003 To verify login page UI fields</td>
+<td></td>
+<td>0</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_login_page_url()'><b>Verify_login_page_url</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_002 To verify login page url</td>
+<td></td>
+<td>3</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_submitRequest_link()'><b>Verify_submitRequest_link</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_013 To verify submit request link and FAQ link</td>
+<td></td>
+<td>36</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_termsOfService_link()'><b>Verify_termsOfService_link</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_010 To verify terms of service link </td>
+<td></td>
+<td>12</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_validation_message_with_empty_email_address_and_empty_password_field()'><b>Verify_validation_message_with_empty_email_address_and_empty_password_field</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_006 To verify validation message with empty 'email address' and empty 'password' field</td>
+<td></td>
+<td>12</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_validation_message_with_invalid_email_address_and_invalid_password_field()'><b>Verify_validation_message_with_invalid_email_address_and_invalid_password_field</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_007 To verify validation message with invalid 'Email address' and invalid 'password'</td>
+<td></td>
+<td>5</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_validation_message_with_valid_emailAddress_and_empty_password_field()'><b>Verify_validation_message_with_valid_emailAddress_and_empty_password_field</b><br>Test class: TestCases.LoginTest<br>Test method:  TC_Login_004  To verify validation message with valid 'email address' and empty 'password' field</td>
+<td></td>
+<td>7</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+<tr>
+<td title='TestCases.LoginTest.Verify_validation_message_with_valid_password_and_empty_emailAddress_field()'><b>Verify_validation_message_with_valid_password_and_empty_emailAddress_field</b><br>Test class: TestCases.LoginTest<br>Test method: TC_Login_005 To verify validation message with valid 'Password' and empty 'email address' field</td>
+<td></td>
+<td>10</td>
+<td>TestCases.LoginTest@2ca26d77</td></tr>
+</table><p>
+</body>
+</html>

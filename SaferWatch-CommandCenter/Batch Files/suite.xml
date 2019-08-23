@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Safer Watch Test Suite">
+	<test name="Login Test">
+		<!-- Included classes here will be executed. -->
+		<classes>
+			 <class name = "TestCases.LoginTest"></class>
+		</classes>
+	</test>
+	<test name="Create user Tests">
+		<!-- Included classes here will be executed. -->
+		<classes>
+			 <class name = "TestCases.CreateUserTest"></class>
+		</classes>
+	</test>	
+</suite>

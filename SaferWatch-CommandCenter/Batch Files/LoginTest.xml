@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Login Suite">
+	<test name="Login Tests">
+		<!-- Included classes here will be executed. -->
+		<classes>
+			 <class name = "TestCases.LoginTest"></class>
+		</classes>
+	</test>
+</suite>

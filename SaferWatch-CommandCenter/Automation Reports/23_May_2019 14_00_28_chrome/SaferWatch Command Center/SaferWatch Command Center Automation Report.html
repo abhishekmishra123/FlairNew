@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				ExtentReports
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+            
+                
+            
+        
+		</style>
+	</head>
+	
+	
+	<body class='extent default standard hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+					<li class='analysis waves-effect'><a href='#!' class='categories-view' onclick="_updateCurrentStage(1)"><i class='mdi-maps-local-offer'></i>Categories</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>TestNG : Report</span> <span class='report-headline'></span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>23-05-2019 14:15:18</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 14m 50s+10ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 14m 50s+10ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>23-05-2019 14:00:28</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>23-05-2019 14:15:19</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>Admin</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Windows 10</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>10.0.1</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>DESKTOP-2I0BQ67</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+					<div class='category-summary-view'>
+						<div class='col l4 m6 s12'>
+							<div class='card-panel'>
+								<span class='label info outline right'>Categories</span>
+								<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+										</tr>
+									</thead>
+									<tbody>
+											<tr>
+												<td>
+													Sanity
+												</td>
+											</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+								<div>
+									<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+										<i class='mdi-maps-local-offer'></i>
+									</a>
+									<ul id='category-toggle' class='dropdown-content'>
+											<li class='Sanity'><a href='#!'>Sanity</a></li>
+										<li class='divider'></li>
+										<li class='clear'><a href='#!'>Clear Filters</a></li>
+									</ul>
+								</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='7f5fc21d-f585-477f-b495-41e7e7ee420b'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_login_page_title </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:29</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:00:30</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+368ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_001 To verify login page title</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:00:30</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_title.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_title.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='c3a2ce43-c04d-41d3-a1f6-beaafcbb0f0a'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_login_page_url </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:30</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:00:34</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 4s+255ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_002 To verify login page url</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:00:34</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_url.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_url.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='7a2f2aa5-2761-41d1-9b91-05c06cb80a35'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_login_page_ui_fields </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:34</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:00:35</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 1s+226ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_003 To verify login page UI fields</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:00:35</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_ui_fields.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_page_ui_fields.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='64fa9ba4-8eff-4591-97dc-a6feb7500046'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_validation_message_with_valid_emailAddress_and_empty_password_field </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:35</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:00:44</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 8s+609ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_004 To To verify validation message with valid 'email address' and empty 'password' field</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:00:44</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_valid_emailAddress_and_empty_password_field.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_valid_emailAddress_and_empty_password_field.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='26155db1-59df-4243-8b1f-1e624fda69b1'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_validation_message_with_valid_password_and_empty_emailAddress_field </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:44</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:00:55</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 11s+389ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_005 To verify validation message with valid 'password' and empty 'email address' field</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:00:55</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_valid_password_and_empty_emailAddress_field.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_valid_password_and_empty_emailAddress_field.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='7b944ebd-f052-48c4-918f-0e3e1625e23f'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_validation_message_with_empty_email_address_and_empty_password_field </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:00:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:01:09</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 13s+518ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_006 To verify validation message with empty 'email address' and empty 'password' field</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:01:09</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_empty_email_address_and_empty_password_field.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_empty_email_address_and_empty_password_field.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='8ec5864c-03f5-414c-b336-667c8775a8aa'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_validation_message_with_invalid_email_address_and_invalid_password_field </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:01:09</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:01:16</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 6s+823ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_007 To verify validation message with invalid 'Email address' and invalid 'password' field</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:01:16</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_invalid_email_address_and_invalid_password_field.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_with_invalid_email_address_and_invalid_password_field.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='2b8f8758-fb27-4346-b341-cd9a347b687a'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_css_value_of_login_page_fields </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:01:16</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:01:27</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 11s+641ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_08 To verify css value of login page fields</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:01:27</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_css_value_of_login_page_fields.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_css_value_of_login_page_fields.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='a2b85a76-488f-4824-b769-23c11c3b21f0'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_forgot_password_link </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:01:27</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:01:47</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 19s+882ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_002 To verify login page url</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:01:47</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_forgot_password_link.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_forgot_password_link.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='16fdd535-211b-464d-8e69-e08b06329027'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_termsOfService_link </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:01:47</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:02:01</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+80ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_009 To verify 'Terms of service' link</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:02:01</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_termsOfService_link.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_termsOfService_link.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='89c53e75-d3b2-4118-a4e5-f3bdca8d8002'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_login_functionality_with_valid_credentials_of_superAdmin </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:02:01</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:02:34</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 32s+465ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_014 To verify login functionality with valid credentials of administrator</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:02:34</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_functionality_with_valid_credentials_of_superAdmin.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_functionality_with_valid_credentials_of_superAdmin.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='a861b94b-8b56-4bbe-b80e-f2b9dffb4968'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_login_functionality_with_public_user </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:02:34</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:02:48</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 14s+126ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_014 To verify login functionality with sign up public user</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:02:48</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_functionality_with_public_user.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_login_functionality_with_public_user.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='85f772a5-0d3b-4cd2-8734-f508cdca1072'>
+											<div class='test-head'>
+												<span class='test-name'>LoginTest::Verify_submitRequest_link </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:02:48</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:03:26</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 37s+868ms</span>
+												</div>
+												<div class='test-desc'>TC_Login_011 To Verify submit request link</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:03:26</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_submitRequest_link.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_submitRequest_link.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='e4598227-ad62-4fba-a906-0491fb066d8b'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::A_Verify_org_user_login_functionality_with_all_permission_and_create_new_customize_create_user_types </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:03:26</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:06:45</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 3m 19s+52ms</span>
+												</div>
+												<div class='test-desc'>TC_CreateOrgUser_5 A) To Verify creation of org user functionality with all_permission, 'maually add user', with new '+ customize/create user types' and with all rights</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:06:45</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_A_Verify_org_user_login_functionality_with_all_permission_and_create_new_customize_create_user_types.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_A_Verify_org_user_login_functionality_with_all_permission_and_create_new_customize_create_user_types.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='9e30b1f9-cb89-407a-808f-4c27850ae1ff'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::B_Verify_org_user_login_functionality_with_all_permission_and_existing_User_Types </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:06:45</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:08:02</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 16s+707ms</span>
+												</div>
+												<div class='test-desc'>TC_CreateUser_5 To Verify creation of org user functionality with all_permission, 'maually add user' \r\n" + 
+ "and with existing 'create user type'</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:08:02</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_B_Verify_org_user_login_functionality_with_all_permission_and_existing_User_Types.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_B_Verify_org_user_login_functionality_with_all_permission_and_existing_User_Types.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='f28333e9-6bca-4139-862a-c4e8304dc189'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_validation_message_without_select_Organization_location_and_user_abilities </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:08:02</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:08:19</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 17s+661ms</span>
+												</div>
+												<div class='test-desc'>TC_CreateOrgUser_1 To Verify validation messages without select Organization/location & user abilities</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:08:19</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_Organization_location_and_user_abilities.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_Organization_location_and_user_abilities.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='76d549e8-8722-488d-ac38-014b6ea00b73'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_validation_message_without_select_Organization_location </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:08:19</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:09:18</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 58s+615ms</span>
+												</div>
+												<div class='test-desc'>TC_createUser_2 To Verify validation message without select organization/location</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:09:18</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_Organization_location.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_Organization_location.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='baeecab2-b408-47ec-a070-fccbf2dd97ce'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_validation_message_without_select_User_Abilities </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:09:18</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:09:55</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 36s+988ms</span>
+												</div>
+												<div class='test-desc'>TC_createOrgUser_3 To Verify validation message without select User Abilities</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:09:55</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_User_Abilities.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_validation_message_without_select_User_Abilities.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='253871de-8db8-4943-b1ca-09d1d86653f0'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_the_mandatory_fields_popup_on_select_users_section </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:09:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:10:36</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 40s+914ms</span>
+												</div>
+												<div class='test-desc'>TC_createOrgUser_4 To Verify the mandatory fields pop-up on select users section</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:10:36</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_the_mandatory_fields_popup_on_select_users_section.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_the_mandatory_fields_popup_on_select_users_section.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='0b8adbb7-10c3-428d-b233-45fb0accd02f'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_org_user_login_functionality_with_submit_a_report_permission </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:10:36</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:12:56</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 20s+31ms</span>
+												</div>
+												<div class='test-desc'>TC_CreateOrgUser_6 Verify org user login functionality with 'submit a report' permission </div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:12:56</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_org_user_login_functionality_with_submit_a_report_permission.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_org_user_login_functionality_with_submit_a_report_permission.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='d6d56e4f-1112-437f-886b-6ab70f63efa3'>
+											<div class='test-head'>
+												<span class='test-name'>CreateUserTest::Verify_org_user_login_functionality_with_receive_intel_permission </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  sanity'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>23-05-2019 14:12:56</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>23-05-2019 14:15:18</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 22s+196ms</span>
+												</div>
+												<div class='test-desc'>TC_CreateOrgUser_7  Verify org user login functionality with 'receive intel' permission</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Sanity</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>14:15:18</td>
+																	<td class='step-details'><a href='F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_org_user_login_functionality_with_receive_intel_permission.png' data-featherlight='image'><img class='report-img' src='file:///F:\WS\SaferWatchNew\SaferWatchNew\Automation Reports\23_May_2019 14_00_28_chrome\SaferWatch Command Center\PassScreenshots\ScreenShot_Verify_org_user_login_functionality_with_receive_intel_permission.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+				<div id='categories-view' class='row _addedTable hide'>
+					<div class='col _addedCell1'>
+						<div class='contents'>
+							<div class='card-panel heading'>
+								<h5>Categories</h5>
+							</div>
+							<div class='card-panel filters'>
+								<div class='search' alt='Search tests' title='Search tests'>
+									<div class='input-field left'>
+										<input id='searchTests' type='text' class='validate' placeholder='Search...'>
+									</div>
+									<a href="#" class='btn-floating btn-small waves-effect waves-light blue lighten-1'>
+										<i class='mdi-action-search'></i>
+									</a>
+								</div>
+							</div>
+							<div class='card-panel no-padding-h no-padding-v'>
+								<div class='wrapper'>
+									<ul id='cat-collection' class='cat-collection'>
+											<li class='category-item displayed'>
+												<div class='cat-head'>
+													<span class='category-name'>Sanity</span>
+												</div>
+												<div class='category-status-counts'>
+														<span class='pass label dot'>Pass: 21</span>
+												</div>
+												<div class='cat-body'>
+													<div class='category-status-counts'>
+														<div class='button-group'>
+															<a href='#!' class='pass label filter'>Pass <span class='icon'>21</span></a>
+															<a href='#!' class='fail label filter'>Fail <span class='icon'>0</span></a>
+															<a href='#!' class='other label filter'>Others <span class='icon'>0</span></a>
+														</div>
+													</div>
+													<div class='cat-tests'>
+														<table class='bordered'>
+															<thead>
+																<tr>
+																	<th>RunDate</th>
+																	<th>Test Name</th>
+																	<th>Status</th>
+																</tr>
+															</thead>
+															<tbody>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:29</td>
+																		<td><span class='category-link linked' extentid='7f5fc21d-f585-477f-b495-41e7e7ee420b'>LoginTest::Verify_login_page_title</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:30</td>
+																		<td><span class='category-link linked' extentid='c3a2ce43-c04d-41d3-a1f6-beaafcbb0f0a'>LoginTest::Verify_login_page_url</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:34</td>
+																		<td><span class='category-link linked' extentid='7a2f2aa5-2761-41d1-9b91-05c06cb80a35'>LoginTest::Verify_login_page_ui_fields</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:35</td>
+																		<td><span class='category-link linked' extentid='64fa9ba4-8eff-4591-97dc-a6feb7500046'>LoginTest::Verify_validation_message_with_valid_emailAddress_and_empty_password_field</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:44</td>
+																		<td><span class='category-link linked' extentid='26155db1-59df-4243-8b1f-1e624fda69b1'>LoginTest::Verify_validation_message_with_valid_password_and_empty_emailAddress_field</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:00:55</td>
+																		<td><span class='category-link linked' extentid='7b944ebd-f052-48c4-918f-0e3e1625e23f'>LoginTest::Verify_validation_message_with_empty_email_address_and_empty_password_field</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:01:09</td>
+																		<td><span class='category-link linked' extentid='8ec5864c-03f5-414c-b336-667c8775a8aa'>LoginTest::Verify_validation_message_with_invalid_email_address_and_invalid_password_field</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:01:16</td>
+																		<td><span class='category-link linked' extentid='2b8f8758-fb27-4346-b341-cd9a347b687a'>LoginTest::Verify_css_value_of_login_page_fields</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:01:27</td>
+																		<td><span class='category-link linked' extentid='a2b85a76-488f-4824-b769-23c11c3b21f0'>LoginTest::Verify_forgot_password_link</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:01:47</td>
+																		<td><span class='category-link linked' extentid='16fdd535-211b-464d-8e69-e08b06329027'>LoginTest::Verify_termsOfService_link</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:02:01</td>
+																		<td><span class='category-link linked' extentid='89c53e75-d3b2-4118-a4e5-f3bdca8d8002'>LoginTest::Verify_login_functionality_with_valid_credentials_of_superAdmin</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:02:34</td>
+																		<td><span class='category-link linked' extentid='a861b94b-8b56-4bbe-b80e-f2b9dffb4968'>LoginTest::Verify_login_functionality_with_public_user</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:02:48</td>
+																		<td><span class='category-link linked' extentid='85f772a5-0d3b-4cd2-8734-f508cdca1072'>LoginTest::Verify_submitRequest_link</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:03:26</td>
+																		<td><span class='category-link linked' extentid='e4598227-ad62-4fba-a906-0491fb066d8b'>CreateUserTest::A_Verify_org_user_login_functionality_with_all_permission_and_create_new_customize_create_user_types</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:06:45</td>
+																		<td><span class='category-link linked' extentid='9e30b1f9-cb89-407a-808f-4c27850ae1ff'>CreateUserTest::B_Verify_org_user_login_functionality_with_all_permission_and_existing_User_Types</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:08:02</td>
+																		<td><span class='category-link linked' extentid='f28333e9-6bca-4139-862a-c4e8304dc189'>CreateUserTest::Verify_validation_message_without_select_Organization_location_and_user_abilities</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:08:19</td>
+																		<td><span class='category-link linked' extentid='76d549e8-8722-488d-ac38-014b6ea00b73'>CreateUserTest::Verify_validation_message_without_select_Organization_location</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:09:18</td>
+																		<td><span class='category-link linked' extentid='baeecab2-b408-47ec-a070-fccbf2dd97ce'>CreateUserTest::Verify_validation_message_without_select_User_Abilities</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:09:55</td>
+																		<td><span class='category-link linked' extentid='253871de-8db8-4943-b1ca-09d1d86653f0'>CreateUserTest::Verify_the_mandatory_fields_popup_on_select_users_section</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:10:36</td>
+																		<td><span class='category-link linked' extentid='0b8adbb7-10c3-428d-b233-45fb0accd02f'>CreateUserTest::Verify_org_user_login_functionality_with_submit_a_report_permission</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>23-05-2019 14:12:56</td>
+																		<td><span class='category-link linked' extentid='d6d56e4f-1112-437f-886b-6ab70f63efa3'>CreateUserTest::Verify_org_user_login_functionality_with_receive_intel_permission</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+															<tbody>
+														</table>
+													</div>
+												</div> 
+											</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='cat-details-wrapper' class='col _addedCell2'>
+						<div class='contents'>
+							<div class='card-panel details-view'>
+								<h5 class='cat-name'></h5>
+								<div class='cat-container'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+		</script>
+	</body>
+</html>

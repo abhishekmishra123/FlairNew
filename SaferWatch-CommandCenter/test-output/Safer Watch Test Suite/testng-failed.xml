@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Safer Watch Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Create user Tests(failed)">
+    <classes>
+      <class name="TestCases.CreateUserTest">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="Verify_org_user_login_functionality_with_submit_a_report_permission"/>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- TestCases.CreateUserTest -->
+    </classes>
+  </test> <!-- Create user Tests(failed) -->
+</suite> <!-- Failed suite [Safer Watch Test Suite] -->
